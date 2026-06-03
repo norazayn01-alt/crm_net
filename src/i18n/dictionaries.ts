@@ -1,0 +1,198 @@
+export type Locale = "en" | "uz" | "ru" | "ko";
+
+export const dictionaries = {
+  en: {
+    // General
+    search: "Search...",
+    logout: "Logout",
+    add: "Add",
+    export: "Export",
+    import: "Import",
+    home: "Home",
+    adminUser: "Admin User",
+    admin: "Admin",
+
+    // Sidebar Categories
+    portal: "Portal",
+    core: "Core",
+    hr: "HR",
+    finance: "Finance",
+    salesAndClients: "Sales & Clients",
+    warehouse: "Warehouse",
+    retail: "Retail",
+
+    // Sidebar Links
+    myPortal: "My Portal",
+    dashboard: "Dashboard",
+    departments: "Departments",
+    attendance: "Attendance",
+    currencies: "Currencies",
+    expenses: "Expenses",
+    clients: "Clients",
+    orders: "Orders",
+    inventory: "Inventory",
+    suppliers: "Suppliers",
+    purchases: "Purchases",
+    pos: "POS",
+
+    // Departments Page
+    departmentsTitle: "Departments",
+    newDepartment: "New Department",
+    addnewDepartment: "Add New Department",
+    depName: "Name",
+    depHead: "Head of Department",
+    depEmpCount: "Employee Count",
+    save: "Save",
+    dep_it: "IT & Development",
+    dep_hr: "Human Resources (HR)",
+    dep_finance: "Finance",
+    dep_warehouse: "Warehouse",
+    dep_sales: "Sales Department",
+  },
+  uz: {
+    // General
+    search: "Qidirish...",
+    logout: "Chiqish",
+    add: "Qo'shish",
+    export: "Eksport",
+    import: "Import",
+    home: "Asosiy",
+    adminUser: "Admin",
+    admin: "Admin",
+
+    // Sidebar Categories
+    portal: "Portal",
+    core: "Asosiy",
+    hr: "Kadrlar (HR)",
+    finance: "Moliya",
+    salesAndClients: "Savdo va Mijozlar",
+    warehouse: "Omborxona",
+    retail: "Chakana savdo",
+
+    // Sidebar Links
+    myPortal: "Mening Portalim",
+    dashboard: "Dashboard",
+    departments: "Bo'limlar",
+    attendance: "Davomat",
+    currencies: "Valyutalar",
+    expenses: "Xarajatlar",
+    clients: "Mijozlar",
+    orders: "Buyurtmalar",
+    inventory: "Ombor",
+    suppliers: "Ta'minotchilar",
+    purchases: "Xaridlar",
+    pos: "Kassa (POS)",
+
+    // Departments Page
+    departmentsTitle: "Bo'limlar",
+    newDepartment: "Yangi Bo'lim",
+    addnewDepartment: "Yangi bo'lim qo'shish",
+    depName: "Nomi",
+    depHead: "Bo'lim boshlig'i",
+    depEmpCount: "Xodimlar soni",
+    save: "Saqlash",
+    dep_it: "IT va Dasturlash",
+    dep_hr: "Kadrlar (HR)",
+    dep_finance: "Moliya",
+    dep_warehouse: "Omborxona",
+    dep_sales: "Sotuv bo'limi",
+  },
+  ru: {
+    // General
+    search: "Поиск...",
+    logout: "Выйти",
+    add: "Добавить",
+    export: "Экспорт",
+    import: "Импорт",
+    home: "Главная",
+    adminUser: "Администратор",
+    admin: "Админ",
+
+    // Sidebar Categories
+    portal: "Портал",
+    core: "Основа",
+    hr: "Кадры (HR)",
+    finance: "Финансы",
+    salesAndClients: "Продажи и Клиенты",
+    warehouse: "Склад",
+    retail: "Розница",
+
+    // Sidebar Links
+    myPortal: "Мой портал",
+    dashboard: "Дашборд",
+    departments: "Отделы",
+    attendance: "Посещаемость",
+    currencies: "Валюты",
+    expenses: "Расходы",
+    clients: "Клиенты",
+    orders: "Заказы",
+    inventory: "Инвентарь",
+    suppliers: "Поставщики",
+    purchases: "Закупки",
+    pos: "Касса (POS)",
+
+    // Departments Page
+    departmentsTitle: "Отделы",
+    newDepartment: "Новый отдел",
+    addnewDepartment: "Добавить новый отдел",
+    depName: "Название",
+    depHead: "Руководитель",
+    depEmpCount: "Кол-во сотрудников",
+    save: "Сохранить",
+    dep_it: "IT и программирование",
+    dep_hr: "Кадры (HR)",
+    dep_finance: "Финансы",
+    dep_warehouse: "Склад",
+    dep_sales: "Отдел продаж",
+  },
+  ko: {
+    // General
+    search: "검색...",
+    logout: "로그아웃",
+    add: "추가",
+    export: "내보내기",
+    import: "가져오기",
+    home: "홈",
+    adminUser: "관리자",
+    admin: "어드민",
+
+    // Sidebar Categories
+    portal: "포털",
+    core: "코어",
+    hr: "인사 (HR)",
+    finance: "재무",
+    salesAndClients: "영업 및 고객",
+    warehouse: "창고",
+    retail: "소매",
+
+    // Sidebar Links
+    myPortal: "내 포털",
+    dashboard: "대시보드",
+    departments: "부서",
+    attendance: "근태",
+    currencies: "통화",
+    expenses: "경비",
+    clients: "고객",
+    orders: "주문",
+    inventory: "재고",
+    suppliers: "공급업체",
+    purchases: "구매",
+    pos: "포스 (POS)",
+
+    // Departments Page
+    departmentsTitle: "부서",
+    newDepartment: "새 부서",
+    addnewDepartment: "새 부서 추가",
+    depName: "이름",
+    depHead: "부서장",
+    depEmpCount: "직원 수",
+    save: "저장",
+    dep_it: "IT 및 개발",
+    dep_hr: "인사 (HR)",
+    dep_finance: "재무",
+    dep_warehouse: "창고",
+    dep_sales: "영업부",
+  },
+};
+
+export type DictionaryKey = keyof typeof dictionaries.en;
