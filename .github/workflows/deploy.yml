@@ -21,10 +21,22 @@ jobs:
 
       - name: Package
         run: |
-          # Faqat kerakli fayllarni yig'ish (Next.js standalone folder)
-          cp -r .next/standalone ./deploy-package
-          cp -r public ./deploy-package/
-          cp -r .next/static ./deploy-package/.next/static
+          # Standalone papkani tekshirish
+          if [ ! -d ".next/standalone" ]; then
+            echo "Error: .next/standalone papkasi topilmadi!"
+            echo "Iltimos, next.config.js da 'output: standalone' ni tekshiring."
+            exit 1
+          fi
+
+          # Kerakli fayllarni yig'ish
+          mkdir -p ./deploy-package
+          cp -r .next/standalone/. ./deploy-package/
+          
+          # public papkasini va static papkalarini qo'shish
+          if [ -d "public" ]; then cp -r public ./deploy-package/; fi
+          cp -r .next/static ./deploy-package/.next/static/
+          
+          # Arxivlash
           cd deploy-package && zip -r ../release.zip .
 
       - name: Copy to EC2
