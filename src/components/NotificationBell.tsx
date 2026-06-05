@@ -33,7 +33,7 @@ export function NotificationBell() {
         aria-label="Notifications"
       >
         <Bell size={20} />
-        <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+        <span className="absolute top-1.5 right-1.5 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
       </button>
 
       {isOpen && (

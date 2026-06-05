@@ -8,11 +8,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
-        with: { node-version: '20' }
+        with:
+          node-version: '20'
 
       - name: Build
         run: |
@@ -21,18 +23,9 @@ jobs:
 
       - name: Package
         run: |
-          # Standalone papkani tekshirish
-          if [ ! -d ".next/standalone" ]; then
-            echo "Error: .next/standalone papkasi topilmadi!"
-            echo "Iltimos, next.config.js da 'output: standalone' ni tekshiring."
-            exit 1
-          fi
-
-          # Kerakli fayllarni yig'ish
+          # Standalone papkani tayyorlash
           mkdir -p ./deploy-package
           cp -r .next/standalone/. ./deploy-package/
-          
-          # public papkasini va static papkalarini qo'shish
           if [ -d "public" ]; then cp -r public ./deploy-package/; fi
           cp -r .next/static ./deploy-package/.next/static/
           
@@ -48,7 +41,7 @@ jobs:
           source: "release.zip"
           target: "~/erp/temp"
 
-      - name: Deploy
+      - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -56,10 +49,18 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/erp
-            # Eski fayllarni tozalash
-            rm -rf .next public server.js package.json node_modules
-            # Yangisini ochish
+            
+            # 1. Eski fayllarni tozalash (xatolik bermasligi uchun || true)
+            rm -rf .next public server.js node_modules .next/static || true
+            
+            # 2. Yangi fayllarni ochish
             unzip -o temp/release.zip -d .
-            # Eski jarayonni o'chirish va yangisini boshlash
+            
+            # 3. Eski jarayonni to'xtatish
+            fuser -k 3000/tcp || true
             fuser -k 3001/tcp || true
-            nohup node server.js -p 3001 > server.log 2>&1 &
+            
+            # 4. Yangisini PORT=3001 bilan ishga tushirish
+            PORT=3001 nohup node server.js > server.log 2>&1 &
+            
+            echo "Deployment muvaffaqiyatli yakunlandi!"
